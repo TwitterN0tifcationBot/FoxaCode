@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FoxaCode Documentary - Discord Bot Tutorial</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>FoxaCode Documentary - Discord Bot Tutorial</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="info.html">Information</a>
+        </nav>
+    </header>
+    <div class="container">
+        <h2>Creating a Discord Bot with JavaScript</h2>
+        <p>In this tutorial, we will create a simple Discord bot using JavaScript and the Discord.js library.</p>
+        
+        <h3>Step 1: Setting Up</h3>
+        <p>First, you need to have Node.js installed on your computer. You can download it from <a href="https://nodejs.org/" target="_blank">nodejs.org</a>.</p>
+        
+        <h3>Step 2: Creating a New Discord Application</h3>
+        <ol>
+            <li>Go to the <a href="https://discord.com/developers/applications" target="_blank">Discord Developer Portal</a>.</li>
+            <li>Click on "New Application" and give it a name.</li>
+            <li>Navigate to the "Bot" tab and click "Add Bot".</li>
+            <li>Copy the bot token. You will need this later.</li>
+        </ol>
+        
+        <h3>Step 3: Setting Up Your Project</h3>
+        <pre><code>
+// Create a new directory for your bot
+mkdir my-discord-bot
+cd my-discord-bot
+
+// Initialize a new Node.js project
+npm init -y
+
+// Install the Discord.js library
+npm install discord.js
+        </code></pre>
+        
+        <h3>Step 4: Writing the Bot Code</h3>
+        <p>Create a file named <code>index.js</code> and add the following code:</p>
+        <pre><code class="language-javascript">
+const { Client, GatewayIntentBits } = require('discord.js');
+const client = new Client({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent] });
+
+const token = 'YOUR_BOT_TOKEN_HERE';
+
+client.once('ready', () => {
+    console.log('Bot is online!');
+});
+
+client.on('messageCreate', message => {
+    if (message.content === '!ping') {
+        message.channel.send('Pong!');
+    }
+});
+
+client.login(token);
+        </code></pre>
+        
+        <h3>Step 5: Running Your Bot</h3>
+        <p>To start your bot, run the following command in your project directory:</p>
+        <pre><code>
+node index.js
+        </code></pre>
+        <p>Your bot should now be online and respond to the <code>!ping</code> command in your Discord server!</p>
+    </div>
+    <footer>
+        <p>&copy; 2023 FoxaCode Documentary. All rights reserved.</p>
+    </footer>
+</body>
+</html>
